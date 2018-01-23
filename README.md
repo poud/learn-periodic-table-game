@@ -7,4 +7,4 @@ Maybe fix the design a bit and add the rest of the atoms :)
 
 # Update
 
-All atoms(all known atoms) are now in this game! Incredible!
+All (known) elements of the periodic table are now in this game! Incredible!

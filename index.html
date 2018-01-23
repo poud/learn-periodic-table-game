@@ -1,134 +1,127 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,800" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="utf-8">
+    <title>Game</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:800" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
     <style>
-    @media screen and (max-aspect-ratio: 1/1) {
-    * {
-        background-color: lightgreen;
-    }
-    }
+      @media screen and (max-aspect-ratio: 1/1) {
+      * {
+          background-color: lightgreen;
+        }
+      }
       @media screen and (max-width: 480px){
         * {
           font-size: 12vw;
         }
       }
-    * {
-      font-weight: 800;
-      text-transform: uppercase;
-      font-family: 'Open Sans', sans-serif;
-      padding: none;
-      margin: none;
-      text-align: center;
-      overflow:hidden;
-      font-size: 7vh;
-    }
-    body {
-      margin: 0;
-      background-color: #FF1744;
-    }
-    h1 {
-      color: white;
-    }
-    .flex-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 90vh;
-    }
-    .flex-container>div {
-      color: white;
-      cursor: pointer;
-    }
-    #inp {
-      display: none;
-      text-align: center;
-      background-color: transparent;
-      border: none;
-      color: white;
-    }
-    #play:hover {
-      opacity: 0.5;
-      cursor: pointer;
-      transition: opacity 1s;
-    }
-    .nomark {
-      -webkit-touch-callout: none;
-      -webkit-user-select: none;
-      -khtml-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      -o-user-select: none;
-      user-select: none;
-    }
-    </style>
-    <title>Game</title>
-  </head>
-  <body>
-    <div class="flex-container">
-      <h1 id="q" class="nomark"><span id="numb"></span><br><span id="name"></span><input maxlength="24" onkeyup="check()" id="inp" type="text"></input><h1>
-      <div id="play" class="nomark" onclick="play()">PLAY</div>
-
-    </div>
-    <script>
-    var a = ["Hydrogen", "Helium", "Lithium", "Beryllium", "Boron", "Carbon", "Nitrogen", "Oxygen", "Fluorine", "Neon", "Sodium", "Magnesium", "Aluminum", "Silicon", "Phosphorus", "Sulfur", "Chlorine", "Argon", "Potassium", "Calcium", "Scandium", "Titanium", "Vanadium", "Chromium", "Manganese", "Iron", "Cobalt", "Nickel", "Copper", "Zinc", "Gallium", "Germanium", "Arsenic", "Selenium", "Bromine", "Krypton", "Rubidium", "Strontium", "Yttrium", "Zirconium", "Niobium", "Molybdenum", "Technetium", "Ruthenium", "Rhodium", "Palladium", "Silver", "Cadmium", "Indium", "Tin", "Antimony", "Tellurium", "Iodine", "Xenon", "Cesium", "Barium", "Lanthanum", "Cerium", "Praseodymium", "Neodymium", "Promethium", "Samarium", "Europium", "Gadolinium", "Terbium", "Dysprosium", "Holmium", "Erbium", "Thulium", "Ytterbium", "Lutetium", "Hafnium", "Tantalum", "Tungsten", "Rhenium", "Osmium", "Iridium", "Platinum", "Gold", "Mercury", "Thallium", "Lead", "Bismuth", "Polonium", "Astatine", "Radon", "Francium", "Radium", "Actinium", "Thorium", "Protactinium", "Uranium", "Neptunium", "Plutonium", "Americium", "Curium", "Berkelium", "Berkelium", "Einsteinium", "Fermium", "Mendelevium", "Nobelium", "Lawrencium", "Rutherfordium", "Dubnium", "Seaborgium", "Bohrium", "Hassium", "Meitnerium", "Darmstadtium", "Roentgenium", "Copernicium", "Nihonium", "Flerovium", "Moscovium", "Livermorium", "Tennessine", "Oganesson"];
-    var score = 1;
-    var n = 0;
-    var g = 0;
-    function play(){
-    document.getElementById("play").innerHTML = "";
-    document.getElementById("numb").style.display = "inline";
-    simon();
-    }
-    function simon() {
-      document.getElementById("q").style.display = "inline";
-      document.getElementById("name").innerHTML = a[n];
-      document.getElementById("numb").innerHTML = n + 1;
-      if(score === n){
-        test();
-        n = 0;
-        return;
-      } else {
-        n++;
-        setTimeout(simon,1000);
+      * {
+        font-weight: bold;
+        text-transform: uppercase;
+        font-family: 'Open Sans', sans-serif;
+        padding: 0;
+        margin: 0;
+        text-align: center;
+        font-size: 7vh;
+        user-select: none;
+        color: white;
+        outline: none;
+        border: none;
+        justify-content: center;
+        align-items: center;
       }
-    }
-    function test() {
-      document.getElementById("name").style.display = "none";
-      document.getElementById("inp").value = "";
-      document.getElementById("numb").innerHTML = g + 1;
-      document.getElementById("inp").style.display = "inline";
-      document.getElementById("inp").focus();
-    }
-    function check() {
-      console.log("Ablegøyer");
-      var ans = a[g].toLowerCase();
-      var usr = document.getElementById("inp").value;
-      usr = usr.toLowerCase();
-      if(ans === usr){
-        if(score === g+1){
-          if(score === a.length){
-            document.getElementById("inp").style.display = "none";
-            document.getElementById("numb").style.display = "none";
-            document.getElementById("name").innerHTML = "You won";
-            document.getElementById("name").style.display = "inline";
-          } else {
-          score ++;
-          document.getElementById("inp").style.display = "none";
-          document.getElementById("name").style.display = "inline";
-          g = 0;
-          simon();
-          return;
-          }
-        }else {
-          g++;
+      body {
+        background-color: #FF1744;
+      }
+      #hud {
+        display: flex;
+        height: 90vh;
+      }
+      #input {
+        background-color: transparent;
+        display: none;
+      }
+      #play:hover {
+        opacity: 0.5;
+        cursor: pointer;
+        transition: opacity 0.5s;
+      }
+      #victory {
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="hud">
+      <p id="play" onclick="play()">Play</p>
+
+      <div>
+        <p id="number"></p>
+
+        <p id="name"></p>
+
+        <input id="input" maxlength="24" onkeyup="check()" type="text"></input>
+      </div>
+
+      <p id="victory">You won</p>
+    </div>
+
+    <script>
+      var a = ["Hydrogen", "Helium", "Lithium", "Beryllium", "Boron", "Carbon", "Nitrogen", "Oxygen", "Fluorine", "Neon", "Sodium", "Magnesium", "Aluminum", "Silicon", "Phosphorus", "Sulfur", "Chlorine", "Argon", "Potassium", "Calcium", "Scandium", "Titanium", "Vanadium", "Chromium", "Manganese", "Iron", "Cobalt", "Nickel", "Copper", "Zinc", "Gallium", "Germanium", "Arsenic", "Selenium", "Bromine", "Krypton", "Rubidium", "Strontium", "Yttrium", "Zirconium", "Niobium", "Molybdenum", "Technetium", "Ruthenium", "Rhodium", "Palladium", "Silver", "Cadmium", "Indium", "Tin", "Antimony", "Tellurium", "Iodine", "Xenon", "Cesium", "Barium", "Lanthanum", "Cerium", "Praseodymium", "Neodymium", "Promethium", "Samarium", "Europium", "Gadolinium", "Terbium", "Dysprosium", "Holmium", "Erbium", "Thulium", "Ytterbium", "Lutetium", "Hafnium", "Tantalum", "Tungsten", "Rhenium", "Osmium", "Iridium", "Platinum", "Gold", "Mercury", "Thallium", "Lead", "Bismuth", "Polonium", "Astatine", "Radon", "Francium", "Radium", "Actinium", "Thorium", "Protactinium", "Uranium", "Neptunium", "Plutonium", "Americium", "Curium", "Berkelium", "Berkelium", "Einsteinium", "Fermium", "Mendelevium", "Nobelium", "Lawrencium", "Rutherfordium", "Dubnium", "Seaborgium", "Bohrium", "Hassium", "Meitnerium", "Darmstadtium", "Roentgenium", "Copernicium", "Nihonium", "Flerovium", "Moscovium", "Livermorium", "Tennessine", "Oganesson"];
+      var s = 1;
+      var n = 0;
+      var g = 0;
+      function play() {
+        document.getElementById("play").style.display = "none";
+        simon();
+      }
+      function simon() {
+        document.getElementById("name").innerHTML = a[n];
+        document.getElementById("number").innerHTML = n + 1;
+        if(s === n) {
+          n = 0;
           test();
-          return;
+        } else {
+          n++;
+          setTimeout(simon,1000);
         }
       }
-    }
+      function test() {
+        document.getElementById("number").innerHTML = g + 1;
+        document.getElementById("name").style.display = "none";
+        document.getElementById("input").value = "";
+        document.getElementById("input").style.display = "inherit";
+        document.getElementById("input").focus();
+      }
+      function check() {
+        var ans = a[g].toLowerCase();
+        var usr = document.getElementById("input").value;
+        usr = usr.toLowerCase();
+        if(ans === usr) {
+          if(s === g + 1) {
+            if(s === a.length) {
+              document.getElementById("number").style.display = "none";
+              document.getElementById("name").style.display = "none";
+              document.getElementById("input").style.display = "none";
+              document.getElementById("victory").style.display = "inherit";
+            } else {
+            s++;
+            document.getElementById("input").style.display = "none";
+            document.getElementById("name").style.display = "inherit";
+            g = 0;
+            simon();
+            return;
+            }
+          } else {
+            g++;
+            test();
+            return;
+          }
+        }
+      }
     </script>
   </body>
 </html>
